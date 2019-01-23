@@ -19,8 +19,4 @@ APIs are separated into two categories: trading and feed. Trading APIs require a
 All APIs are used at your risk and expense. We are not responsible for any negligence, error, compromised security, malfunction, cyberattack, or other force majeure affecting this environment. You hereby release us, hold us harmless, and indemnify us from any and all damages, losses, or claims associated with your use of this environment.
 
 # Contact
-
-terence.lee@bitmart.com & siyuan.meng@bitmart.com
-
-Or Join our
-[Telegram API Group](https://t.me/bitmart_api) and reach out to `Terence Lee` or `Siyuan Meng`
+Join our [Telegram API Group](https://t.me/bitmart_api) and reach out to `Terence Lee` or `Siyuan Meng`
