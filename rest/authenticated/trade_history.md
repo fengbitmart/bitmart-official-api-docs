@@ -152,10 +152,10 @@ print(response.text)
 | entrust_id | string | Order id |
 | trade_id | string | Trade history id |
 | symbol | string | Trading pair symbol |
-| timestamp | string | Order create time (in milliseconds) |
+| timestamp | string | Execution time (in milliseconds) |
 | active | boolean | Order status |
-| price | string | Price of the order |
-| fees | string | Fees of the order |
+| price | string | Executed price |
+| fees | string | Executed fee |
 | amount | string | Executed amount |
 | total_pages | string | Total number of pages |
 | total_trades | string | Total number of trades |
