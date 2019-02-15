@@ -19,4 +19,15 @@ APIs are separated into two categories: trading and feed. Trading APIs require a
 All APIs are used at your risk and expense. We are not responsible for any negligence, error, compromised security, malfunction, cyberattack, or other force majeure affecting this environment. You hereby release us, hold us harmless, and indemnify us from any and all damages, losses, or claims associated with your use of this environment.
 
 # Contact
-Join our [Telegram API Group](https://t.me/bitmart_api) and reach out to `Terence Lee` or `Siyuan Meng`
+
+Join our [Telegram API Group](https://t.me/bitmart_api) and reach out to `Terence Lee` or `Siyuan Meng`.
+
+# Release Notes
+
+## 2019-02-14
+
+* ```X-BM-SIGNATURE``` is mandatory for placing and canceling order.
+* [Trade history](rest/authenticated/trade_history.md) API is added so user can track the execution history.
+* ```precision``` parameter under [Order Book](rest/public/order_book.md) API is optional.
+* ```symbol_id``` is added in [Ticker](rest/public/ticker.md) API.
+* Improved trading efficiency.
