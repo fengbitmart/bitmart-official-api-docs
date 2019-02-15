@@ -98,6 +98,8 @@ print(response.text)
 | symbol | path | Trading pair symbol |
 | precision | query | Price precision whose range is defined in symbol details |
 
+```precision``` is optional. If not passed in, use ```price_max_precision``` returned from [symbols details](../public/symbols_details.md) API.
+
 #### Response Details
 
 | Key | Type | Description |

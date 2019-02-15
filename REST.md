@@ -129,6 +129,10 @@ A successful response is indicated by HTTP status code 200 and may contain an op
 * GET [List Orders](rest/authenticated/user_orders.md)
 * GET [Order details](rest/authenticated/order_details.md)
 
+### Trade
+
+* GET [Trade History](rest/authenticated/trade_history.md)
+
 # Q & A
 
 **Q: Can we use multiple vald token at the same time?**

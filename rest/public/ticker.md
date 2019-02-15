@@ -18,17 +18,18 @@ print(response.text)
 
 ```js
 {  
-   "volume":"1.000000",
-   "base_volume":"0.000500",
-   "highest_price":"0.000500",
-   "lowest_price":"0.000201",
-   "current_price":"0.000500",
-   "ask_1":"0.000500",
-   "ask_1_amount": "6997.00",
-   "bid_1":"0.000201",
-   "bid_1_amount": "27.82"
-   "fluctuation":"+0.0275",
-   "url":"https://www.bitmart.com/trade?symbol=BMX_ETH"
+    "volume":"17603607.6",
+    "ask_1":"0.00010030",
+    "base_volume":"1765.0",
+    "lowest_price":"0.00009900",
+    "bid_1":"0.00009901",
+    "highest_price":"0.00011000",
+    "ask_1_amount":"211",
+    "current_price":"0.00009944",
+    "fluctuation":"-0.0058",
+    "symbol_id":"BMX_ETH",
+    "url":"https://www.bitmart.com/trade?symbol=BMX_ETH",
+    "bid_1_amount":"95"
 }
 ```
 
@@ -42,6 +43,7 @@ print(response.text)
 
 | Key | Type | Description |
 | :--- | :--- | :--- |
+| symbol\_id | string | Trading pair symbol |
 | volume | string | Trading volume |
 | base\_volume | string | Target volume |
 | highest\_price | string | Highest price within 24 hr |
