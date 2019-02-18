@@ -33,6 +33,10 @@ url = "https://openapi.bitmart.com/v2/orders"
 
 // timestamp is in milliseconds and the authorization header is "Bearer " + token
 // X-BM-SIGNATURE is the HMAC SHA256 signature of the request parameters encrypted by API Secret
+<<<<<<< HEAD
+=======
+headers = {"X-BM-TIMESTAMP": xxx, "X-BM-AUTHORIZATION": "xxx", "X-BM-SIGNATURE": "2302088e474141fc7b498d0fa96c9cc2eda39a5a24fd1495d469d0a72e5fd483", "Content-Type": "application/json"}
+>>>>>>> 3b18b3d6193f248dd4c95177d4bf98902ed0b82d
 
 secret = "***"
 headers = {"X-BM-TIMESTAMP": ***, "X-BM-AUTHORIZATION": "***", "Content-Type": "application/json"}
