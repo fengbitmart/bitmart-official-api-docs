@@ -21,6 +21,9 @@ Here is a sample request from the Linux comman line using ```echo```, ```openssl
 
 ```py
 import requests
+import hmac
+import hashlib
+from urllib import urlencode
 
 entrust_id = ***
 url = "https://openapi.bitmart.com/v2/orders/%s" % entrust_id
