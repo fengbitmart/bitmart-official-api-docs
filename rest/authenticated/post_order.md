@@ -33,9 +33,20 @@ url = "https://openapi.bitmart.com/v2/orders"
 
 // timestamp is in milliseconds and the authorization header is "Bearer " + token
 // X-BM-SIGNATURE is the HMAC SHA256 signature of the request parameters encrypted by API Secret
-headers = {"X-BM-TIMESTAMP": xxx, "X-BM-AUTHORIZATION": "xxx", "X-BM-SIGNATURE": "df658d1d61537a842dba5ddb3f69a96f04a87ba4a9b3fba478cece39cb5da57f", "Content-Type": "application/json"}
 
-data = {"symbol": "BMX_ETH","amount": 1,"price" : 1,"side" : "buy"}
+secret = "***"
+headers = {"X-BM-TIMESTAMP": ***, "X-BM-AUTHORIZATION": "***", "Content-Type": "application/json"}
+
+// notice: the price and amount should be formatted as *.******, not scientific notation
+data = {"symbol": "BMX_ETH", "amount": 1,"price": 1,"side": "buy"}
+
+// notice: the parameters should be sorted in alphabetical order
+sorted_data = sorted(data.items(), key=lambda d: d[0], reverse=False)
+message = str(urlencode(sorted_data))
+signed_message = hmac.new(secret, message, hashlib.sha256).hexdigest()
+
+// add signed_message to the headers
+headers["X-BM-SIGNATURE"] = signed_message
 
 data = json.dumps(data)
 

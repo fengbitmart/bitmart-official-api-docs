@@ -22,11 +22,24 @@ Here is a sample request from the Linux comman line using ```echo```, ```openssl
 ```py
 import requests
 
-url = "https://openapi.bitmart.com/v2/orders/1223181"
+entrust_id = ***
+url = "https://openapi.bitmart.com/v2/orders/%s" % entrust_id
 
 // timestamp is in milliseconds and the authorization header is "Bearer " + token
 // X-BM-SIGNATURE is the HMAC SHA256 signature of the request parameters encrypted by API Secret
-headers = {"X-BM-TIMESTAMP": xxx, "X-BM-AUTHORIZATION": "xxx", "X-BM-SIGNATURE": "de4ed768cea4eb2f0fe081009eab1f41c5fd6ff6ed53768df7fe252472c257b3"}
+
+secret = "***"
+headers = {"X-BM-TIMESTAMP": ***, "X-BM-AUTHORIZATION": "***"}
+
+data = {"entrust_id": entrust_id}
+
+// notice: the parameters should be sorted in alphabetical order
+sorted_data = sorted(data.items(), key=lambda d: d[0], reverse=False)
+message = str(urlencode(sorted_data))
+signed_message = hmac.new(secret, message, hashlib.sha256).hexdigest()
+
+// add signed_message to the headers
+headers["X-BM-SIGNATURE"] = signed_message
 
 response = requests.delete(url, headers=headers)
 
