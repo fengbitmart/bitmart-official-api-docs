@@ -24,7 +24,7 @@ The parameters should be sorted base on alphabetic order, which is amount, price
 (stdin)= 2302088e474141fc7b498d0fa96c9cc2eda39a5a24fd1495d469d0a72e5fd483
 ```
 
-### Sample Request \(Python\)
+### Sample Request \(Python 2\)
 
 ```py
 import requests

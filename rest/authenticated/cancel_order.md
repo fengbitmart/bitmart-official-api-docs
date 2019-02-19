@@ -17,7 +17,7 @@ Here is a sample request from the Linux comman line using ```echo```, ```openssl
 (stdin)= de4ed768cea4eb2f0fe081009eab1f41c5fd6ff6ed53768df7fe252472c257b3
 ```
 
-### Sample Request \(Python\)
+### Sample Request \(Python 2\)
 
 ```py
 import requests
