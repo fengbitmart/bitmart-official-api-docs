@@ -41,12 +41,18 @@ secret = "***"
 headers = {"X-BM-TIMESTAMP": ***, "X-BM-AUTHORIZATION": "***", "Content-Type": "application/json"}
 
 // notice: the price and amount should be formatted as *.******, not scientific notation
+// amount = format(amount, ".10f")
+// price = format(price, ".10f")
 data = {"symbol": "BMX_ETH", "amount": 1,"price": 1,"side": "buy"}
 
 // notice: the parameters should be sorted in alphabetical order
 sorted_data = sorted(data.items(), key=lambda d: d[0], reverse=False)
 message = str(urlencode(sorted_data))
 signed_message = hmac.new(secret, message, hashlib.sha256).hexdigest()
+
+// if you are using python 3, it will be a little different to sign the message
+// you can use: 
+// signed_message = hmac.new(bytes(secret, "utf-8"), bytes(message, "utf-8"), hashlib.sha256).hexdigest()
 
 // add signed_message to the headers
 headers["X-BM-SIGNATURE"] = signed_message
