@@ -49,6 +49,36 @@ response = requests.delete(url, headers=headers)
 print(response.text)
 ```
 
+### Sample Request \(Go\)
+```go
+func main() {
+	entrust_id := "1223181"
+	access_token := get_access_token(api_key, api_secret, memo)
+
+	URL := endpoint + "/v2/orders/"
+	URL += entrust_id
+
+	message := fmt.Sprintf("entrust_id=%s", entrust_id)
+
+	req, _ := http.NewRequest("DELETE", URL, nil)
+
+	req.Header.Add("X-Bm-Timestamp", fmt.Sprintf("%d", time.Now().UnixNano()/1000000))
+	req.Header.Add("X-Bm-Authorization", "Bearer "+access_token)
+	req.Header.Add("X-Bm-Signature", create_sha256_signature(api_secret, message))
+
+	res, err := http.DefaultClient.Do(req)
+	if err != nil {
+		panic(err)
+	}
+	defer res.Body.Close()
+
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(string(body))
+}
+
+```
+
 ### Sample Response
 
 ```js
