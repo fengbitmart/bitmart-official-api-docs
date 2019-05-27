@@ -57,64 +57,64 @@ if __name__ == '__main__':
 package main
 
 import (
-	"bytes"
-	"crypto/hmac"
-	"crypto/sha256"
-	"encoding/hex"
-	"encoding/json"
-	"fmt"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+    "bytes"
+    "crypto/hmac"
+    "crypto/sha256"
+    "encoding/hex"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+    "net/url"
 )
 
 var (
-	api_key    = "6591f7c2491db0a23a1d8ad6911c825e"
-	api_secret = "8c08d9d5c3d15b105dbddaf96e427ac6"
-	memo       = "mymemo"
-	endpoint   = "https://openapi.bitmart.com"
+    api_key    = "6591f7c2491db0a23a1d8ad6911c825e"
+    api_secret = "8c08d9d5c3d15b105dbddaf96e427ac6"
+    memo       = "mymemo"
+    endpoint   = "https://openapi.bitmart.com"
 )
 
 type Token struct {
-	AccessToken string  `json:"access_token"`
-	ExpiresIn   float64 `json:"expires_in"`
+    AccessToken string  `json:"access_token"`
+    ExpiresIn   float64 `json:"expires_in"`
 }
 
 func create_sha256_signature(key string, message string) string {
-	mac := hmac.New(sha256.New, []byte(key))
-	_, err := mac.Write([]byte(message))
-	if err != nil {
-		panic(err)
-	}
-	return hex.EncodeToString(mac.Sum(nil))
+    mac := hmac.New(sha256.New, []byte(key))
+    _, err := mac.Write([]byte(message))
+    if err != nil {
+        panic(err)
+    }
+    return hex.EncodeToString(mac.Sum(nil))
 }
 
 func get_access_token(api_key string, api_secret string, memo string) string {
-	auth_url := endpoint + "/v2/authentication"
-	message := fmt.Sprintf("%s:%s:%s", api_key, api_secret, memo)
+    auth_url := endpoint + "/v2/authentication"
+    message := fmt.Sprintf("%s:%s:%s", api_key, api_secret, memo)
 
-	data := url.Values{}
-	data.Set("grant_type", "client_credentials")
-	data.Set("client_id", api_key)
-	data.Set("client_secret", create_sha256_signature(api_secret, message))
+    data := url.Values{}
+    data.Set("grant_type", "client_credentials")
+    data.Set("client_id", api_key)
+    data.Set("client_secret", create_sha256_signature(api_secret, message))
 
-	buf := bytes.NewBuffer([]byte(data.Encode()))
+    buf := bytes.NewBuffer([]byte(data.Encode()))
 
-	res, err := http.Post(auth_url, "application/x-www-form-urlencoded", buf)
-	if err != nil {
-		panic(err)
-	}
-	defer res.Body.Close()
+    res, err := http.Post(auth_url, "application/x-www-form-urlencoded", buf)
+    if err != nil {
+        panic(err)
+    }
+    defer res.Body.Close()
 
-	body, _ := ioutil.ReadAll(res.Body)
+    body, _ := ioutil.ReadAll(res.Body)
 
-	token := Token{}
-	err = json.Unmarshal(body, &token)
-	if err != nil {
-		panic(err)
-	}
+    token := Token{}
+    err = json.Unmarshal(body, &token)
+    if err != nil {
+        panic(err)
+    }
 
-	return token.AccessToken
+    return token.AccessToken
 }
 
 func main() {

@@ -20,24 +20,24 @@ print(response.text)
 ### Sample Request \(Go\)
 ```go
 func main() {
-	access_token := get_access_token(api_key, api_secret, memo)
+    access_token := get_access_token(api_key, api_secret, memo)
 
-	URL := endpoint + "/v2/orders?symbol=BMX_ETH&side=buy"
+    URL := endpoint + "/v2/orders?symbol=BMX_ETH&side=buy"
 
-	req, _ := http.NewRequest("DELETE", URL, nil)
+    req, _ := http.NewRequest("DELETE", URL, nil)
 
-	req.Header.Add("X-Bm-Timestamp", fmt.Sprintf("%d", time.Now().UnixNano()/1000000))
-	req.Header.Add("X-Bm-Authorization", "Bearer "+access_token)
+    req.Header.Add("X-Bm-Timestamp", fmt.Sprintf("%d", time.Now().UnixNano()/1000000))
+    req.Header.Add("X-Bm-Authorization", "Bearer "+access_token)
 
-	res, err := http.DefaultClient.Do(req)
-	if err != nil {
-		panic(err)
-	}
-	defer res.Body.Close()
+    res, err := http.DefaultClient.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer res.Body.Close()
 
-	body, _ := ioutil.ReadAll(res.Body)
+    body, _ := ioutil.ReadAll(res.Body)
 
-	fmt.Println(string(body))
+    fmt.Println(string(body))
 }
 ```
 

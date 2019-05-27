@@ -67,51 +67,51 @@ print(response.text)
 ### Sample Request \(Go\)
 ```go
 func main() {
-	amount := 1.0
-	price := 1.0
-	side := "buy"
-	symbol := "BMX_ETH"
+    amount := 1.0
+    price := 1.0
+    side := "buy"
+    symbol := "BMX_ETH"
 
-	access_token := get_access_token(api_key, api_secret, memo)
+    access_token := get_access_token(api_key, api_secret, memo)
 
-	URL := endpoint + "/v2/orders"
+    URL := endpoint + "/v2/orders"
 
-	jsdata, err := json.Marshal(map[string]interface{}{
-		"amount": amount,
-		"price":  price,
-		"side":   side,
-		"symbol": symbol,
-	})
-	if err != nil {
-		panic(err)
-	}
+    jsdata, err := json.Marshal(map[string]interface{}{
+        "amount": amount,
+        "price":  price,
+        "side":   side,
+        "symbol": symbol,
+    })
+    if err != nil {
+        panic(err)
+    }
 
-	buf := bytes.NewBuffer(jsdata)
+    buf := bytes.NewBuffer(jsdata)
 
-	message := fmt.Sprintf(
-		"amount=%s&price=%s&side=%s&symbol=%s",
-		strconv.FormatFloat(amount, 'f', -1, 64),
-		strconv.FormatFloat(price, 'f', -1, 64),
-		side,
-		symbol,
-	)
+    message := fmt.Sprintf(
+        "amount=%s&price=%s&side=%s&symbol=%s",
+        strconv.FormatFloat(amount, 'f', -1, 64),
+        strconv.FormatFloat(price, 'f', -1, 64),
+        side,
+        symbol,
+    )
 
-	req, _ := http.NewRequest("POST", URL, buf)
+    req, _ := http.NewRequest("POST", URL, buf)
 
-	req.Header.Add("Content-Type", "application/json")
-	req.Header.Add("X-Bm-Timestamp", fmt.Sprintf("%d", time.Now().UnixNano()/1000000))
-	req.Header.Add("X-Bm-Authorization", "Bearer "+access_token)
-	req.Header.Add("X-Bm-Signature", create_sha256_signature(api_secret, message))
+    req.Header.Add("Content-Type", "application/json")
+    req.Header.Add("X-Bm-Timestamp", fmt.Sprintf("%d", time.Now().UnixNano()/1000000))
+    req.Header.Add("X-Bm-Authorization", "Bearer "+access_token)
+    req.Header.Add("X-Bm-Signature", create_sha256_signature(api_secret, message))
 
-	res, err := http.DefaultClient.Do(req)
-	if err != nil {
-		panic(err)
-	}
-	defer res.Body.Close()
+    res, err := http.DefaultClient.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer res.Body.Close()
 
-	body, _ := ioutil.ReadAll(res.Body)
+    body, _ := ioutil.ReadAll(res.Body)
 
-	fmt.Println(string(body))
+    fmt.Println(string(body))
 }
 
 ```
