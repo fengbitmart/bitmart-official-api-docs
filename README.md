@@ -45,7 +45,7 @@ The evaluation is based on:
 - Repeatedly "one up" or "front-run" the best Bid/Ask on the Order Book
 - Spam order creation and cancellation very quickly without executing trades
 - Low (num of Trades / num of total orders) rate, that means the cancelled orders without execution rate is far bigger than the normal user
-- BMX related pairs will be amplified judged.
+- BMX related pairs will be amplified judged
 
 # Release Notes
 
