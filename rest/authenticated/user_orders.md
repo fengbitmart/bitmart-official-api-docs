@@ -89,7 +89,7 @@ However, for high-volume trading it is strongly recommended that you maintain yo
 | 3 | Success orders |
 | 4 | Canceled orders |
 | 5 | Pending and partially successful orders |
-| 6 | Success and canceled orders |
+| 6 | Not support any more. Please use 3 or 4 to retrieve Success/Cancelled orders|
 
 
 
